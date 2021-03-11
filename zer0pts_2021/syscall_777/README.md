@@ -1,2 +1,1 @@
-# syscall_777
- seccomp-tools, z3
+# syscall_777 (61 solved)
