@@ -1,5 +1,5 @@
 # syscall_777 (61 solved)
-# Author challenge: ptr-yudai.
+# Author challenge: @ptr-yudai.
 ``` 
 - Description: Did you know system call number 777 in Linux works as a flag checker?.
 - TD;LR: Analyze syscall() in main function use seccomp-tools to dump the asm, then you have to use z3 solver to get the flag.
