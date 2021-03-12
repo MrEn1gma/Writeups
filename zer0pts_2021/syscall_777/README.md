@@ -248,4 +248,35 @@ Look at this function, we saw `prctl()`, i knew that is used to filter/monitor s
  0204: 0x06 0x00 0x00 0x00050001  return ERRNO(1)
 ```
 * Time to coding
-* 
+``` 
+We can use z3 solve + binascii package to print the flag, i'll show part of my sol, you can watch in my code.
+```
+```python
+for i in range(15):
+    
+    solver.add((fx[i]) & 0xff < 128)
+    solver.add((fx[i] >> 8) & 0xff < 128)
+    solver.add((fx[i] >> 16) & 0xff < 128)
+    solver.add((fx[i] >> 24) & 0xff < 128)
+
+    mem0 = fx[i]
+    mem1 = mem0 ^ fx[(i + 1) % 14]
+    mem2 = mem1 ^ fx[(i + 2) % 14]
+    mem3 = mem2 ^ fx[(i + 3) % 14]
+    mem4 = mem0 + mem1 + mem2 + mem3
+    mem5 = mem0 - mem1 + mem2 - mem3
+    mem6 = mem0 + mem1 - mem2 - mem3
+    mem7 = mem0 - mem1 - mem2 + mem3
+    #mem8 = mem4 | mem5
+    mem8 = (mem4 | mem5) ^ (mem6 & mem7)
+    #mem9 = mem5 | mem6
+    mem9 = (mem5 | mem6) ^ (mem7 & mem4)
+    #mem10 = mem6 | mem7
+    mem10 = (mem6 | mem7) ^ (mem4 & mem5)
+    #mem11 = mem7 | mem4
+    mem11 = (mem7 | mem4) ^ (mem5 & mem6)
+
+    solver.add(Or(*[And(mem8 == val[0], mem9 == val[1], 
+                        mem10 == val[2], mem11 == val[3]) for val in values]))
+```
+And then, we have a final answer: `zer0pts{B3rk3l3y_P4ck3t_F1lt3r:Y3t_4n0th3r_4ss3mbly}`
