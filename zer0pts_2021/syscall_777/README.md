@@ -1,49 +1,38 @@
 # syscall_777 (61 solved)
 ``` 
-Description: Did you know system call number 777 in Linux works as a flag checker?
-TD;LR: Analyze syscall() in main function use seccomp-tools to dump the asm, then you have to use z3 solver to get the flag
+Description: Did you know system call number 777 in Linux works as a flag checker?.
+TD;LR: Analyze syscall() in main function use seccomp-tools to dump the asm, then you have to use z3 solver to get the flag.
 ```
-
-# Main function:
+Some RE challenge use techniques to hide the encrypted function. In this challenge, syscall() will load the init before main then run the shellcode in `UNK_B00`.
 ```c
-__int64 __fastcall main(int a1, char **a2, char **a3)
+// sub_7C0 function
+unsigned __int64 sub_7C0()
 {
-  __int64 v3; // rcx
-  unsigned int v4; // er12
-  int *v5; // rdi
-  __int64 i; // rbx
-  int v8[14]; // [rsp+0h] [rbp-68h] BYREF
-  unsigned __int64 v9; // [rsp+38h] [rbp-30h]
+  char *v0; // rdi
+  _DWORD *v1; // rsi
+  __int64 v2; // rcx
+  __int16 v4; // [rsp+0h] [rbp-688h] BYREF
+  char *v5; // [rsp+8h] [rbp-680h]
+  char v6[1640]; // [rsp+10h] [rbp-678h] BYREF
+  unsigned __int64 v7; // [rsp+678h] [rbp-10h]
 
-  v3 = 14LL;
-  v4 = 1;
-  v9 = __readfsqword(0x28u);
-  v5 = v8;
-  while ( v3 )
+  v7 = __readfsqword(0x28u);
+  if ( prctl(38, 1LL, 0LL, 0LL, 0LL) )
+    goto LABEL_2;
+  v0 = v6;
+  v1 = &unk_B00;
+  v2 = 410LL;
+  v4 = 205;
+  while ( v2 )
   {
-    *v5++ = 0;
-    --v3;
+    *(_DWORD *)v0 = *v1++;
+    v0 += 4;
+    --v2;
   }
-  __printf_chk(1LL, "FLAG: ", a3);
-  if ( (unsigned int)__isoc99_scanf("%55s", v8) != 1 )
-    return v4;
-  for ( i = 1LL; i != 15; ++i )
-  {
-    syscall(
-      777LL,
-      (unsigned int)v8[i - 1],
-      (unsigned int)v8[(int)i % 14],
-      (unsigned int)v8[((int)i + 1) % 14],
-      (unsigned int)v8[((int)i + 2) % 14]);
-    v4 = *__errno_location();
-    if ( v4 == 1 )
-    {
-      puts("Wrong...");
-      return v4;
-    }
-  }
-  v4 = 0;
-  puts("Correct!");
-  return v4;
+  v5 = v6;
+  if ( prctl(22, 2LL, &v4) )
+LABEL_2:
+    exit(1);
+  return __readfsqword(0x28u) ^ v7;
 }
 ```
