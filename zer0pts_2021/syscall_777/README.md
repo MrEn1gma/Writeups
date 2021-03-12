@@ -3,7 +3,7 @@
 - Description: Did you know system call number 777 in Linux works as a flag checker?.
 - TD;LR: Analyze syscall() in main function use seccomp-tools to dump the asm, then you have to use z3 solver to get the flag.
 ```
-Some RE challenge use techniques to hide the encrypted function. In this challenge, syscall() will load the init before main then run the shellcode in `UNK_B00`.
+Some RE challenge use techniques to hide the encrypted function. In this challenge, syscall() will load the init before `main function` then run the shellcode in `UNK_B00`.
 ```c
 // sub_7C0 function
 unsigned __int64 sub_7C0()
