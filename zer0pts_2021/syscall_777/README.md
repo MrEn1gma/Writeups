@@ -3,7 +3,7 @@
 - Description: Did you know system call number 777 in Linux works as a flag checker?.
 - TD;LR: Analyze syscall() in main function use seccomp-tools to dump the asm, then you have to use z3 solver to get the flag.
 ```
-Some RE challenge use techniques to hide the encrypted function. In this challenge, syscall() will load the init before `main function` then run the shellcode in `UNK_B00`.
+Some RE challenge use techniques to hide the encrypted function. In this challenge, syscall() will load the `init()` before `main function` then run the shellcode in `UNK_B00`.
 ```c
 // sub_7C0 function
 unsigned __int64 sub_7C0()
@@ -37,7 +37,7 @@ LABEL_2:
 }
 ```
 Look at this function, we saw `prctl()`, i knew that is used to filter/monitor syscall numbers, thanks to @midas explained to me and i can understand what it does. So we can use `seccomp-tools` to dump the result.
-# the asm result 
+# The asm result 
 ```asm
  line  CODE  JT   JF      K
 =================================
@@ -247,7 +247,7 @@ Look at this function, we saw `prctl()`, i knew that is used to filter/monitor s
  0203: 0x06 0x00 0x00 0x00050000  return ERRNO(0)
  0204: 0x06 0x00 0x00 0x00050001  return ERRNO(1)
 ```
-* Time to coding
+* Time to coding.
 ``` 
 We can use z3 solve + binascii package to print the flag, i'll show part of my sol, you can watch in my code.
 ```
@@ -279,4 +279,4 @@ for i in range(15):
     solver.add(Or(*[And(mem8 == val[0], mem9 == val[1], 
                         mem10 == val[2], mem11 == val[3]) for val in values]))
 ```
-And then, we have a final answer: `zer0pts{B3rk3l3y_P4ck3t_F1lt3r:Y3t_4n0th3r_4ss3mbly}`
+And then, we have a final answer: `zer0pts{B3rk3l3y_P4ck3t_F1lt3r:Y3t_4n0th3r_4ss3mbly}`.
