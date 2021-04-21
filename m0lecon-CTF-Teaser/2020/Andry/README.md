@@ -29,6 +29,7 @@ I'll choose `OnCreate()` and call it's main function.
     }
 ```
 In `check_passsword()`, we can see that the program will take input 32 characters to generate password, each of case is match each of functions which are loaded in library `libandry-lib.so`, so we can make an equations to get answers.
+> The solution script i saved it to `Andry/solve.py`
 ![b](b.png)
 
 Now we turning back to main function, look at this class `DynamicLoaderService`.
@@ -91,7 +92,7 @@ public class Inner {
 ```
 # Final
 Turning back to the class `DynamicLoaderService`, after generated file `.dex` success, this function `handleActionFoo` will call `decrypt()` function and use this magic key `EASYPEASY` to get the flag. I resolve to use this code to write a script :D.
-> The final solution i save to `Andry/solve1.java`
+> The final solution i saved it to `Andry/solve1.java`
 
 # Conclusion
 > This is a good challenge for medium level, i've learnt a little bit from their technique. I'm very lucky because i had practiced it in picoCTF 2019 :D
