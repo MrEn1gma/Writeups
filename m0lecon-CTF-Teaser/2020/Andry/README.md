@@ -58,7 +58,7 @@ for i in range(len(cipher)):
     
 open("dump.dex", "wb").write(bytearray(output_file))
 ```
-After decode this, we gave a file which has a header: `dex`, load to `exeinfoPE`, we can confirm that is a `DEX` file. So that we continue decompile it and here's a result:
+After decoded this, we gave a file which has a header: `dex`, load to `exeinfoPE`, we can confirm that is a `DEX` file. So that we continue decompile it and here's a result:
 ```java
 package p000;
 
@@ -91,7 +91,7 @@ public class Inner {
 }
 ```
 # Final
-Turning back to the class `DynamicLoaderService`, after generated file `.dex` success, this function `handleActionFoo` will call `decrypt()` function and use this magic key `EASYPEASY` to get the flag. I resolve to use this code to write a script :D.
+Turning back to the class `DynamicLoaderService`, after generated file `.dex` success, this function `handleActionFoo` would be called `decrypt()` function and use this magic key `EASYPEASY` to get the flag. I resolve to use this code to write a script :D.
 > The final solution i saved it to `Andry/solve1.java`
 
 # Conclusion
