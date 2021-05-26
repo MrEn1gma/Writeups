@@ -8,7 +8,7 @@ Attachments
 
 ## Solution
 
-- Mấu chốt nằm ở hàm `h()`, hàm đó sẽ lấy 8 byte đê thực hiện mã hoá file bitmap, tiếp đến hàm sẽ khởi tạo `array` để nén file flag vào và tiến hành mã hoá.
+- Mấu chốt nằm ở hàm `h()`, hàm đó sẽ lấy 8 byte để thực hiện mã hoá file bitmap, tiếp đến hàm sẽ khởi tạo `array` để nén file flag vào và tiến hành mã hoá.
 - Đặt breakpoint ở dưới đây, ta sẽ thu được mảng cần decrypt.
 
 ```c#
