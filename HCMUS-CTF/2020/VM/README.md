@@ -33,7 +33,7 @@ Như vậy là chương trình này sẽ lấy đủ 39 ký tự sau khi ngườ
 ```text
 intVM(): lưu trữ các bytecode bao gồm 228 bytes
 runVM(): xử lý các bytecode - hàm này chúng ta sẽ phân tích sâu hơn
-destroyVM(): trỏ đến các bộ nhớ sau khi chạy xong chương trình
+destroyVM(): xoá vùng nhớ đệm sau khi chạy hết chương trình
 ```
 Quan sát hàm runVM():
 ```c
