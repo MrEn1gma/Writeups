@@ -1,1 +1,1 @@
-# Writeup về mảng Reversing.
+Writeups về mảng Reversing.
