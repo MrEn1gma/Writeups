@@ -144,4 +144,5 @@ char *__fastcall check(_BYTE *a1, char *a2)
   return result;
 }
 ```
-Sử dụng plugin `find crypt`, ta có thể đoán được hàm check này chính là AES:
+Sử dụng plugin `FindCrypt`, ta có thể đoán được hàm check này chính là AES:
+![findcrypt](./fcrypt.png)
