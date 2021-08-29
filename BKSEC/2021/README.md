@@ -144,5 +144,6 @@ char *__fastcall check(_BYTE *a1, char *a2)
   return result;
 }
 ```
-Sử dụng plugin `FindCrypt`, ta có thể đoán được hàm check này chính là AES:
+Sử dụng plugin `FindCrypt`, ta có thể kết luận sơ bộ hàm check này chính là AES, ngoài ra dựa vào pesudo-code của hàm check flag thì mình nhận thấy nó mã hoá theo từng block một nên mình đoán nó sử dụng mode CBC:
 ![findcrypt](./fcrypt.png)
+* Quay trở lại hàm main
