@@ -3,7 +3,7 @@
 * Description: Không có
 
 ## Solution
-* Bài này đầu tiên load shellcode chứa một binary có header `MZ`, sau đó thực thi thông qua lệnh `call esi` ở cuối dòng hàm `main`. Tiếp tục debug qua các shellcode ta sẽ tới được hàm main cần phân tích, sau đó dùng thuật toán AES để mã hoá đầu vào rồi so sánh với chuỗi cần tìm.
+* Bài này đầu tiên load shellcode chứa một binary có header `MZ`, sau đó thực thi thông qua lệnh `call esi` ở cuối dòng hàm `main`. Tiếp tục debug qua các block của shellcode, ta sẽ tới được hàm main cần phân tích. Cuối cùng, dùng thuật toán AES để mã hoá đầu vào rồi so sánh với chuỗi cần tìm.
 ![Main function](./main_function.png)
 
 * Chương trình ở hàm main mới có vẻ như đã sử dụng obfuscation để mã hoá các thông điệp trong hàm printf bằng toán tử logic xor, hình dưới là decode về thông điệp ban đầu.
@@ -146,4 +146,23 @@ char *__fastcall check(_BYTE *a1, char *a2)
 ```
 Sử dụng plugin `FindCrypt`, ta có thể kết luận sơ bộ hàm check này chính là AES, ngoài ra dựa vào pesudo-code của hàm check flag thì mình nhận thấy nó mã hoá theo từng block một nên mình đoán nó sử dụng mode CBC:
 ![findcrypt](./fcrypt.png)
-* Quay trở lại hàm main
+* Quay trở lại hàm main, chúng ta nhận thấy rằng sau khi mã hoá input với key là `lanlefthustbksec` nằm ở phần đầu, chương trình sẽ load `encrypted flag` để so sánh với input đã được xử lý:
+![enc](./encrypted.png)
+* iv:
+```c
+ if ( strlen(v22) == 64 )
+  {
+    sub_16E1000(v16, v20.m128i_i8);
+    v17[0] = 0x3020100;                         // iv
+    v4 = v22;
+    v17[1] = 0x7060504;
+    v5 = v17;
+    v17[2] = 0xB0A0908;
+    v17[3] = 0xF0E0D0C;
+    ..................
+    ..................
+```
+* Tới đây ta có thể decrypt được rồi, script solve ở đây: ![solve](./solve.py)
+* FLAG: `BKSEC{31dd8a365525ad47983c9ad675575de9d72f0bd7c17002ff759247073589eec2}`
+
+# END.
