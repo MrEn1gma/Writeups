@@ -89,7 +89,7 @@ debug050:014C17A8 push    eax                               // # You wrong...
 
 * Thông qua các block của hàm main, ta dễ dàng thấy được chương trình nhận input 64 bytes, sau đó kiểm tra độ dài của input để đi vào hàm check flag
 ```c
-char *__fastcall check(_BYTE *a1, char *a2)
+char *__fastcall check_flag(_BYTE *a1, char *a2)
 {
   char v2; // al
   unsigned int v4; // ebx
