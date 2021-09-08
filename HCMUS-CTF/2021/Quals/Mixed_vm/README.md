@@ -25,7 +25,7 @@ Bằng việc debug như trên, không quá khó để đoán và liệt kê 1 s
 - Opcode `0x34535888`: Khởi tạo giá trị. 
 
 Sau khi nắm rõ các opcode, mình có thể kết luận sơ bộ hàm `check` của VM: đầu tiên chương trình sẽ nhận input là 48 ký tự, sau đó lấy 4 byte đầu xor với 0xdeadbeef rồi cộng 
-với 0x1371337, sau đó lấy kq đó xor với 4 byte tiếp theo thay cho giá trị 0xdeadbeef rồi lại cộng với 0x13371337,... Mình sẽ demo lại bằng python.
+với 0x13371337, sau đó lấy kết quả đó xor với 4 byte tiếp theo thay cho giá trị 0xdeadbeef rồi lại cộng với 0x13371337,... Mình sẽ demo lại bằng python.
 
 ```python
 start = 0xdeadbeef
