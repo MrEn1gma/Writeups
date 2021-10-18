@@ -46,4 +46,4 @@ LABEL_7:
 }
 ```
 
-This equations can be solved by z3-solver to get the flag, my script here !(./solve.py)
+This equations can be solved by z3-solver to get the flag, my script here ![solve](./solve.py)
