@@ -81,7 +81,7 @@ math_big___Int__Cmp(v1, v2, v60, v61, v62, v63, (__int64)v120);
 That check can be written in python like this:
 ```txt
 (x ** 2 + y ** 2) % M = numA ** 2 % M
-x*y % M               = numB
+ x*y % M               = numB
 ```
 
 * We cannot use z3 to solve this equations, because it take very long time to find a correct solution. So first, find solution of `(x + y) % M` and `(x - y) % M` from `check flag` function, after that use Z3 to find x and y which are part of flag.
