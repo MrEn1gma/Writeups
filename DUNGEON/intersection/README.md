@@ -65,6 +65,7 @@ This challenge is written by Go, then trace from line 139 to 149, there are 3 bi
 ```
 
 # Find solution
+* First, find solution of `(x + y) % M` and `(x - y) % M` from `check flag` function, then use Z3 to find x and y which are part of flag.
 ```go
 math_big___Int__Mul(v1, v2, v84, (unsigned int)v117, v37, v38, (__int64)v117, v84);
 math_big___Int__Mul(v1, v2, v39, v83, v40, v41, (__int64)v114, v83);
@@ -77,7 +78,8 @@ v71 = v86;
 math_big___Int__Mod(v1, v2, v57, v86, v58, v59, (__int64)v111, (__int64)v111);
 math_big___Int__Cmp(v1, v2, v60, v61, v62, v63, (__int64)v120);
 ```
-That check can be replaced this:
+That check can be written in python like this:
 ```txt
-
+(x ** 2 + y ** 2) % M = numA ** 2 % M
+x*y % M               = numB
 ```
