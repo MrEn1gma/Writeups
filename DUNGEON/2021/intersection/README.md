@@ -65,7 +65,6 @@ This challenge is written by Go, then trace from line 139 to 149, there are 3 bi
 ```
 
 # Find solution
-* First, find solution of `(x + y) % M` and `(x - y) % M` from `check flag` function, then use Z3 to find x and y which are part of flag.
 ```go
 math_big___Int__Mul(v1, v2, v84, (unsigned int)v117, v37, v38, (__int64)v117, v84);
 math_big___Int__Mul(v1, v2, v39, v83, v40, v41, (__int64)v114, v83);
@@ -78,8 +77,20 @@ v71 = v86;
 math_big___Int__Mod(v1, v2, v57, v86, v58, v59, (__int64)v111, (__int64)v111);
 math_big___Int__Cmp(v1, v2, v60, v61, v62, v63, (__int64)v120);
 ```
+
 That check can be written in python like this:
 ```txt
 (x ** 2 + y ** 2) % M = numA ** 2 % M
 x*y % M               = numB
 ```
+
+* We cannot use z3 to solve this equations, because it take very long time to find a correct solution. So first, find solution of `(x + y) % M` and `(x - y) % M` from `check flag` function, after that use Z3 to find x and y which are part of flag.
+`(x + y) % M` and `(x - y) % M`:
+
+![calc](calc.png)
+
+So now, we can find `(x + y) % M` and `(x - y) % M` from `(x + y) ** 2` and `(x - y) ** 2` by using this script https://gist.github.com/nakov/60d62bdf4067ea72b7832ce9f71ae079. Then use this result to make equations in z3-Solver, here is my script: ![solve](./solve.py)
+
+* flag: Neko{intersection_of_x^2+y^2=a^2_and_y=b/x}
+
+# Neko-chan UwU
