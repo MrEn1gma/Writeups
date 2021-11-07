@@ -89,7 +89,7 @@ That check can be written in python like this:
 
 ![calc](calc.png)
 
-So now, we can find `(x + y) % M` and `(x - y) % M` from `(x + y) ** 2` and `(x - y) ** 2` by using this script https://gist.github.com/nakov/60d62bdf4067ea72b7832ce9f71ae079. Then use this result to make equations in z3-Solver, here is my script: ![solve](./solve.py)
+So now, we can find `(x + y) % M` and `(x - y) % M` from `(x + y) ** 2 % M` and `(x - y) ** 2 % M` by using this script https://gist.github.com/nakov/60d62bdf4067ea72b7832ce9f71ae079. Then use this result to make equations in z3-Solver, here is my script: ![solve](./solve.py)
 
 * flag: Neko{intersection_of_x^2+y^2=a^2_and_y=b/x}
 
