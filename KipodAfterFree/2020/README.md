@@ -98,6 +98,6 @@
 - I wrote a script that can unpack back to ogrinal instruction, script here: ![unpack file](./unpacker.py)
 
 # Solve
-- Drop it to IDA, we can see that's a check flag function, which has many equations to check these input characters. I used z3 to solve these equations, just remember to replace `==` to `!=` when you paste it from pseduo-code to your input code.
+- Drop it to IDA, we can see that's a check flag function, which has many equations to check these input characters. I used z3 to solve these equations, just remember to replace `==` to `!=` and `!=` to `==` when you paste it from pseduo-code to your input code.
 
 - My script solve here: ![solve](./solve.py)
