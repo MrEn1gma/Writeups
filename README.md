@@ -1,1 +1,1 @@
-Writeups về mảng Reversing.
+Writeups or Script solve in Reversing challenge.
