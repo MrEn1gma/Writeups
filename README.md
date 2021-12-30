@@ -1,1 +1,1 @@
-Writeups or Script solve in Reversing challenge.
+Writeups and Script solve in Reversing challenge.
