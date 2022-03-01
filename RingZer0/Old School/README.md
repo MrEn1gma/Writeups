@@ -2,7 +2,7 @@
 
 ## TL;DR
 * File bị packed bằng UPX.
-* Sử dụng trình compiler để biên dịch ngôn ngữ Batch Windows, khi chạy chương trình nó sẽ lưu ở thư mục Temp và thực thi tại đó với format là XXXX.bat.
+* Sử dụng trình compiler để biên dịch ngôn ngữ Batch, khi chạy chương trình nó sẽ lưu ở thư mục Temp và thực thi tại đó với format là XXXX.bat.
 * File sau khi nhận được là 1 file Batch đã bị Obfuscated. Giải mã chúng sau đó dịch ngược cái algo sẽ ra được flag.
 
 ## Decompile Batch Script
