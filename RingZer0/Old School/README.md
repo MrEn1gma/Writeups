@@ -3,7 +3,7 @@
 ## TL;DR
 * File bị packed bằng UPX.
 * Sử dụng trình compiler để biên dịch ngôn ngữ Batch, khi chạy chương trình nó sẽ lưu ở thư mục Temp và thực thi tại đó với format là XXXX.bat.
-* File sau khi nhận được là 1 file Batch đã bị Obfuscated. Giải mã chúng sau đó dịch ngược cái algo sẽ ra được flag.
+* File sau khi nhận được là 1 file Batch đã bị Obfuscated. Giải mã chúng sau đó dịch ngược lại sẽ ra được flag.
 
 ## Decompile Batch Script
 - Phân tích trên IDA, ở dòng cuối cùng của hàm Main - hàm `sub_140004F26`. Chúng ta thấy được hàm API `GetTempFileNameA`: lấy đường dẫn của file batch đã được giải nén ở thư mục Temp và `PathRenameExtensionA` sẽ đổi tên thư mục có dạng là XXXX.tmp. Ta có thể mở sẵn thư mục Temp và chạy file exe đó để lấy được source file batch.
