@@ -32,5 +32,81 @@
 32 %GzRuluaP%g%jEwuM%%psaBqfGe%o%IBcUziJN%%KrbaqCnA%t%eNYaiK%%RqvdJ%o%NKZ% :eTzFcK
 ```
 
-- Ý tưởng: Ở dòng đầu tiên ta thấy được có khá nhiều biến có dạng %[A-Za-z]% mục đích làm cho đoạn code trở nên khó đọc hơn. Nhưng nếu ta thử bỏ hết các biến "rác" đi, ta sẽ ra được `goto :PPbpns` (hàm goto .LABEL trong batch được sử dụng để nhảy tới 1 label đã được chỉ định). Như vậy ở dòng 14 nó sẽ nhảy tới dòng 21 và từ dòng 15 đến dòng 20 nó sẽ KHÔNG làm gì hết - hay chúng ta có thể kết luận được đó chính là đoạn code rác (Unused code). Tuy nhiên, ở dòng 28, chúng ta thử decode ra sẽ được đoạn: `title UMD-CTF : Old School : RingZer0 Team`, điều này chúng tỏ rằng đoạn code này chắc chắn là thật. Nếu nhìn 1 cách tổng quát hơn, chúng ta sẽ thấy được một quy luật: các đoạn code nằm ở giữa Label (bắt đầu bằng dấu hai chấm) và Label (bắt đầu bằng các biến %xxxx%) thì chính là code thật. Sau đó ta có thể loại bỏ các Label đi vì nếu để ý kỹ thì các Label luôn được nhảy theo dạng mắt xích. Và cuối cùng là lọc ra các biến rác là bước cuối cùng của quá trình Deobfuscate.
-- Thực hiện: Mình sẽ dùng module `Regex` để thực hiện theo ý tưởng trên vì ban đầu mình đã cố gắng tìm tool để deobfuscate nhưng không được. Đây là Deobfuscate script của mình các bạn có thể tham khảo: ![DeobfuscateScript](decrypt.py)
+- Ý tưởng: Ở dòng đầu tiên ta thấy được rất nhiều biến có dạng %[A-Za-z]% mục đích làm cho đoạn code trở nên khó đọc hơn. Nhưng nếu ta thử bỏ hết các biến "rác" đi, ta sẽ ra được `goto :PPbpns` (hàm goto .LABEL trong batch được sử dụng để nhảy tới 1 label đã được chỉ định). Như vậy ở dòng 14 nó sẽ nhảy tới dòng 21 và từ dòng 15 đến dòng 20 nó sẽ KHÔNG làm gì hết - hay chúng ta có thể kết luận được đó chính là đoạn code rác (Unused code). Tuy nhiên, ở dòng 28, chúng ta thử decode ra sẽ được đoạn: `title UMD-CTF : Old School : RingZer0 Team`, điều này chúng tỏ rằng đoạn code này chắc chắn là thật. Nếu nhìn 1 cách tổng quát hơn, chúng ta sẽ thấy được một quy luật: các đoạn code nằm ở giữa Label (bắt đầu bằng dấu hai chấm) và Label (bắt đầu bằng các biến %xxxx%) thì chính là code thật. Sau đó ta có thể loại bỏ các Label đi vì nếu để ý kỹ thì các Label luôn được nhảy theo dạng mắt xích. Và cuối cùng là lọc ra các biến rác là bước cuối cùng của quá trình Deobfuscate.
+- Thực hiện: Mình sẽ dùng module `Regex` để thực hiện theo ý tưởng trên vì ban đầu mình đã cố gắng tìm tool để deobfuscate nhưng không có. Đây là script giải mã của mình các bạn có thể tham khảo: ![DeobfuscateScript](decrypt.py)
+
+## Solve
+- Chương trình nhận 10 ký tự đầu vào (Điều kiện là các ký tự thuộc [0-9A-F]). Nếu như không thoả, chương trinh sẽ báo lỗi `Set was unexpected at this time.`
+- Hàm `:ll` sẽ đảo ngược chuỗi input, sau đó ghép thành 1 chuỗi dưới dạng `%b1%%b2%%b3%%b4%%b5%%b6%%b7%%b8%%b9%%b10%`
+- Có rất nhiều hàm if nhằm chuyển từ ký tự sang dạng binary, sau đó sẽ xuất output với dạng `%F1%%F2%%F3%%F4%%F5%%F6%%F7%%F8%`
+- So sánh với output `BXVZ54J5`, nếu đúng thì sẽ print ra flag.
+
+Dưới đây là mình giải tay lại để tìm password:
+
+```txt
+result=%F1%%F2%%F3%%F4%%F5%%F6%%F7%%F8%
+=>	F1 = B = 00001
+	F2 = X = 10011
+	F3 = V = 10001
+	F4 = Z = 10101
+	F5 = 5 = 11011
+	F6 = 4 = 11010
+	F7 = J = 01000
+	F8 = 5 = 11011
+
+F1=%II%%JJ%%KK%%LL%%MM%
+	II = 0
+	JJ = 0
+	KK = 0
+	LL = 0
+	MM = 1
+F2=%NN%%ZZ%%PP%%I%%J%
+	NN = 1
+	ZZ = 0
+	PP = 0
+	I = 1
+	J = 1
+F3=%K%%L%%M%%N%%Z%
+	K = 1
+	L = 0
+	M = 0
+	N = 0
+	Z = 1
+F4=%P%%A%%B%%C%%D%
+	P = 1
+	A = 0
+	B = 1
+	C = 0
+	D = 1
+F5=%E%%F%%G%%H%%dd%
+	E = 1
+	F = 1
+	G = 0
+	H = 1
+	DD = 1
+F6=%EE%%FF%%GG%%HH%%AA%
+	EE = 1
+	FF = 1
+	GG = 0
+	HH = 1
+	AA = 0
+F7=%BB%%CC%%Q%%R%%S%
+	BB = 0
+	CC = 1
+	Q = 0
+	R = 0
+	S = 0
+F8=%T%%U%%V%%W%%X%
+	T = 1
+	U = 1
+	V = 0
+	W = 1
+	X = 1
+
+=> binary = 0101 1101 1110 0011 0001 1011 0011 1101 0000 1100
+=> 5DE31B3D0C
+=> pass: C0D3B13ED5
+```
+
+## Lời kết
+* Đây là lần đầu mình được trải nghiệm kỹ thuật deobfuscate bằng `Regex`, nó tốn mình 5-6 ngày để hoàn thiện script giải mã trên. Qua đó cũng giúp mình học hỏi thêm được cách static một file obfuscated sao cho hợp lý, GGWP!.
