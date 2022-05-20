@@ -12,6 +12,6 @@
   * After that, tracing to `nuts_and_bolts::StorageMethod$LT$_$GT$::xor::he5067cd565d835a0()`, we'll get an enc_AES_key.
   ![enc_aes_key](enc_aes_key.png)
   * Finally, XOR both AESKey and enc_AES_key, we'll get a xorkey. It must be 0xd value.
-- The final output key and output flag are the same format: `check_XOR_reverse + encrypted_key` and `check_XOR_reverse + encrypted_flag`, you can see that stored in `memset()`. That's why we see the length of output_flag did not match with the orginal_flag.
+- The final output key and output flag are the same format: `check_XOR_or_reverse + encrypted_key` and `check_XOR_or_reverse + encrypted_flag`, you can see that stored in `memset()`. That's why we see the length of output_flag did not match with the orginal_flag.
 - When we got a keyxor, we can reverse this algo, here is my script solve ![solve](solve.py).
   
