@@ -3,6 +3,7 @@
 ## Solution
 - This challenge gave me 2 file (1 ELF file written by Rust and source code of chall).
 - It using AES Encryption in mode ECB (line 15-18) to generate random key with 32 bytes. Then It will reverse an array or XOR with key and enc_output (after encrypt input by AES).
+![ui](ui.png)
 - That check (rng.gen<u8>() % 2 == 0) will be decided to reverse an array of AES_Key, AES_enc_flag or XOR with AES_key or AES_enc_flag in 10 times loops.
 
   But in source code, we didn't know what value XORed with AESKey in XOR case, so we have to figure out in Rust binary.
