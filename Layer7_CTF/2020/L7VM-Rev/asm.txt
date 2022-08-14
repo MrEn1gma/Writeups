@@ -1,0 +1,41 @@
+mov r2, 0x003a5455504e49
+write(r2, 0x6)
+read(r0, 0x15)
+mov r6, r0
+xor r6, 0x45728976235614
+mov r0, r1
+xor r0, 0x06997d5a209478
+mov r3, r2
+xor r3, 0x5065711f2a7964
+sub r6, r3
+add r0, r6
+sub r3, r0
+mov r6, r4
+mov r0, r5
+mov r3, r6
+mov r4, r4
+mov r5, r5
+mov r6, r6
+mov r2, 0x0000000a214f4e
+cmp r4, 0x9d3290b2501151
+jnz :badboy
+:badboy
+write(r2, 0x4)
+puts("# VM end")
+end sub
+cmp r5, 0xf60fa1da60f478
+jnz :badboy
+:badboy
+write(r2, 0x4)
+puts("# VM end")
+end sub
+cmp r6, 0x6df98d9dbd1c9b
+jnz :badboy
+:badboy
+write(r2, 0x4)
+puts("# VM end")
+end sub
+mov r2, 0x00000a21534559
+write(r2, 0x5)
+puts("# VM end")
+end sub
