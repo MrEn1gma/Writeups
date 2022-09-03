@@ -1,1 +1,1 @@
-## TAG: IDAPython, Z3
+## TAG: IDAPython, Z3, Anti-Disassembly
