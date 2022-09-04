@@ -30,7 +30,7 @@ def getValueFromAddr(list_addr):
     for idx_addr in list_addr:
         out.append(idc.get_operand_value(idx_addr, 1))
         
-    for i in range(0, len(out), 2): # each stages do dec/enc at the same stage, dec/enc are used same size of bytes. So I remove one in each stages
+    for i in range(0, len(out), 2): # each stages do dec/enc at the same step, dec/enc are used same size of bytes. So I remove one in each stages
         out1.append(out[i])
     return out1
 
