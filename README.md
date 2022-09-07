@@ -1,1 +1,3 @@
 Writeups and Script solve in Reversing challenge.
+Now I move on the github page and will store script solve in my Writeup project.
+Visit my blog: https://mren1gma.github.io/ :D
