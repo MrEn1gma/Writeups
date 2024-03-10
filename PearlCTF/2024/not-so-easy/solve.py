@@ -11,7 +11,7 @@ def scramble(fvalue, rvalue, arr_value, xor_key, sub_val):
 
 flag = ""
 for i in range(200):
-    data = open("D:\\Capture The Flag\\Reverse\\PearlCTF\\binaries\\not-so-easy-%s" % (str(i)), "rb").read()
+    data = open("C:\\not-so-easy-%s" % (str(i)), "rb").read()
     first_value = int(binascii.hexlify(data[0x1149:0x114b][::-1]), 16)
     range_value = data[0x11a4] + 1
     if(range_value >= 8):
