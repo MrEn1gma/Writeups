@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flag Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+        }
+
+        .flag-container {
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-radius: 24px;
+            padding: 40px 60px;
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            backdrop-filter: blur(7px);
+            position: relative;
+        }
+
+        .flag-title {
+            font-size: 2.2rem;
+            color: #ffb347;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 0 2px 12px #0008;
+        }
+
+        .flag-value {
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+            letter-spacing: 1.5px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(255, 204, 51, 0.13);
+            display: inline-block;
+            user-select: all;
+            transition: transform 0.2s;
+        }
+
+        .flag-value:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 4px 24px 0 rgba(255, 204, 51, 0.24);
+        }
+
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            border-radius: 24px;
+            box-shadow: 0 0 60px 10px #ffcc33aa, 0 0 120px 40px #ffb34733;
+            opacity: 0.15;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flag-container">
+        <div class="glow"></div>
+        <div class="flag-title">🎉 Your Flag 🎉</div>
+        <div class="flag-value">F4N_N3R0{W3lc0m3_t0_my_pr0f1l3_7h1s_1s_my_w@ll3t_k3y}</div>
+    </div>
+</body>
+
+</html>
