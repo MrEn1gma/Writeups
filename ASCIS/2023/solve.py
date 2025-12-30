@@ -54,10 +54,11 @@ bruteFirstLicenseKeyList = [ord(i) for i in string.printable]
 for brute in bruteFirstLicenseKeyList:
     licenseKey = (chr(brute) + veryCloseLicenseKey).encode()
     print("Testing key: ", licenseKey)
-    exe = Popen([r"D:\Capture The Flag\Reverse\SVATTT\2023\qual\challenge1\challenge1.exe"], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+    exe = Popen([r"D:\challenge1.exe"], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
     result = exe.communicate(input=licenseKey)[0]
     print(result)
     if(b"[!] Path flag:" in result):
         print("FOUND Key: ", licenseKey)
         print("Waiiting for the next flag...")
+
         exit(0)
