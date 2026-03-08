@@ -1,0 +1,38 @@
+edited file
+shellcode_hash: Starting up
+shellcode_hash: Processing current segment only: 0x00000000 - 0x0000e0ff
+shellcode_hash: 0x000000d9: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1ab9b854 kernel32.dll!b'GetProcAddress'
+shellcode_hash: 0x000000f9: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x7f201f78 kernel32.dll!b'LoadLibraryA'
+shellcode_hash: 0x00000109: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x5e893462 kernel32.dll!b'VirtualAlloc'
+shellcode_hash: 0x0000011a: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x06488073 kernel32.dll!b'VirtualFree'
+shellcode_hash: 0x0000012b: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x705cf2a5 kernel32.dll!b'lstrcmpiA'
+shellcode_hash: 0x00000158: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x0db579cb kernel32.dll!b'RtlZeroMemory'
+shellcode_hash: 0x00000158: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x0db579cb ntdll.dll!b'RtlZeroMemory'
+shellcode_hash: 0x00000166: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1518e9c0 kernel32.dll!b'RtlMoveMemory'
+shellcode_hash: 0x00000166: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1518e9c0 ntdll.dll!b'RtlMoveMemory'
+shellcode_hash: 0x0000065b: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1ab9b854 kernel32.dll!b'GetProcAddress'
+shellcode_hash: 0x00000675: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x7f201f78 kernel32.dll!b'LoadLibraryA'
+shellcode_hash: 0x00000699: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x4b106265 ntdll.dll!b'RtlDecompressBuffer'
+shellcode_hash: 0x000000d8: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1ab9b854 kernel32.dll!b'GetProcAddress'
+shellcode_hash: 0x000000f8: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x7f201f78 kernel32.dll!b'LoadLibraryA'
+shellcode_hash: 0x00000108: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x5e893462 kernel32.dll!b'VirtualAlloc'
+shellcode_hash: 0x00000119: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x06488073 kernel32.dll!b'VirtualFree'
+shellcode_hash: 0x0000012a: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x705cf2a5 kernel32.dll!b'lstrcmpiA'
+shellcode_hash: 0x00000157: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x0db579cb kernel32.dll!b'RtlZeroMemory'
+shellcode_hash: 0x00000157: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x0db579cb ntdll.dll!b'RtlZeroMemory'
+shellcode_hash: 0x00000165: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1518e9c0 kernel32.dll!b'RtlMoveMemory'
+shellcode_hash: 0x00000165: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1518e9c0 ntdll.dll!b'RtlMoveMemory'
+shellcode_hash: 0x0000065a: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x1ab9b854 kernel32.dll!b'GetProcAddress'
+shellcode_hash: 0x00000674: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x7f201f78 kernel32.dll!b'LoadLibraryA'
+shellcode_hash: 0x00000698: mw_resolve_api_from_hash_APT_TetCTF_66e9e05bc346c8bb34cfd0f7ce44c481:0x4b106265 ntdll.dll!b'RtlDecompressBuffer'
+shellcode_hash: Done
+
+struct MyStructResolveAPI{
+    DWORD GetProcAddress;
+    DWORD LoadLibraryA;
+    DWORD VirtualAlloc;
+    DWORD VirtualFree;
+    DWORD lstrcmpiA;
+    DWORD RtlZeroMemory;
+    DWORD RtlMoveMemory;
+};
