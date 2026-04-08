@@ -1,0 +1,63 @@
+struct MyStruct01{
+    HMODULE (__stdcall* LoadLibraryA)( LPCSTR lpLibFileName ); 
+    FARPROC (__stdcall* GetProcAddress)( HMODULE hModule, LPCSTR lpProcName ); 
+    LPVOID (__stdcall* VirtualAlloc)( LPVOID lpAddress, SIZE_T dwSize, DWORD flAllocationType, DWORD flProtect ); 
+    BOOL (__stdcall* VirtualFree)( LPVOID lpAddress, SIZE_T dwSize, DWORD dwFreeType ); 
+    int (__stdcall* lstrlenA)( LPCSTR lpString );
+}
+
+struct MyStruct02
+{
+    BOOL (__stdcall* CryptAcquireContextA)( HCRYPTPROV *phProv, LPCSTR szContainer, LPCSTR szProvider, DWORD dwProvType, DWORD dwFlags ); 
+    BOOL (__stdcall* CryptImportKey)( HCRYPTPROV hProv, const BYTE *pbData, DWORD dwDataLen, HCRYPTKEY hPubKey, DWORD dwFlags, HCRYPTKEY *phKey ); 
+    BOOL (__stdcall* CryptHashData)( HCRYPTHASH hHash, const BYTE *pbData, DWORD dwDataLen, DWORD dwFlags ); 
+    BOOL (__stdcall* CryptCreateHash)( HCRYPTPROV hProv, ALG_ID Algid, HCRYPTKEY hKey, DWORD dwFlags, HCRYPTHASH *phHash ); 
+    BOOL (__stdcall* CryptEncrypt)( HCRYPTKEY hKey, HCRYPTHASH hHash, BOOL Final, DWORD dwFlags, BYTE *pbData, DWORD *pdwDataLen, DWORD dwBufLen ); 
+    BOOL (__stdcall* CryptDeriveKey)( HCRYPTPROV hProv, ALG_ID Algid, HCRYPTHASH hBaseData, DWORD dwFlags, HCRYPTKEY *phKey ); 
+    BOOL (__stdcall* CryptGetHashParam)( HCRYPTHASH hHash, DWORD dwParam, BYTE *pbData, DWORD *pdwDataLen, DWORD dwFlags ); 
+    BOOL (__stdcall* CryptDestroyHash)( HCRYPTHASH hHash ); 
+    BOOL (__stdcall* CryptDestroyKey)( HCRYPTKEY hKey ); 
+    BOOL (__stdcall* CryptReleaseContext)( HCRYPTPROV hProv, DWORD dwFlags );
+}
+
+struct MyStructResolveAPI
+{
+    DWORD unknown;
+    DWORD unknown1;
+    MyStruct01* struct01;
+    MyStruct02* struct02;
+    PCHAR input_flag;
+}
+
+struct MyStructEncryptFlag
+{
+  char rickroll_str[0x2b];
+  PCHAR output_flag;
+  DWORD *pdwDataLen;
+  DWORD idx;
+  HCRYPTHASH *phHash;
+  HCRYPTPROV *phProv;
+  HCRYPTKEY *phKey;
+  MyStructResolveAPI api;
+};
+
+MyStructEncryptFlag * __shifted(MyStructEncryptFlag, 0x44) a2;
+
+struct MyStructInputFlag
+{
+  char *input_flag;
+  DWORD is_flag_valid;
+};
+
+struct MyStructCheckFlag
+{
+  char encrypted_flag[28];
+  HMODULE (__stdcall *LoadLibraryA)(LPCSTR lpLibFileName);
+  int (__stdcall* lstrlenA)( LPCSTR lpString );
+  int (__stdcall *MessageBoxA)( HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType );
+  char output_flag[28];
+  DWORD user32_dll_module;
+  int i;
+  MyStructInputFlag inp;
+};
+MyStructCheckFlag * __shifted(MyStructCheckFlag, 0x44) a1;
