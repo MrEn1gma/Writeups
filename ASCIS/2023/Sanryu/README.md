@@ -1,4 +1,4 @@
-## Sanryu 
+# Sanryu 
 Point: 500 
  
 There is a myth about a dragon that had three heads. Fight and rescue our princess. 
