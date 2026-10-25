@@ -1,0 +1,50 @@
+edited file
+shellcode_hash: Starting up
+shellcode_hash: Processing current segment only: 0x7ff77dfd1000 - 0x7ff77dfd6000
+shellcode_hash: 0x7ff77dfd108c: fn_calc_function_hash_ASCIS2023:0xaeb0c2bb ntdll.dll!b'DbgBreakPoint'
+shellcode_hash: 0x7ff77dfd1105: fn_calc_function_hash_ASCIS2023:0xff294889 kernel32.dll!b'VirtualProtect'
+shellcode_hash: 0x7ff77dfd117d: fn_calc_function_hash_ASCIS2023:0xe03410a5 kernel32.dll!b'OpenProcess'
+shellcode_hash: 0x7ff77dfd1201: fn_calc_function_hash_ASCIS2023:0xbebd0f37 kernel32.dll!b'K32GetProcessImageFileNameA'
+shellcode_hash: 0x7ff77dfd1271: fn_calc_function_hash_ASCIS2023:0xfe83228c kernel32.dll!b'K32EnumProcessModules'
+shellcode_hash: 0x7ff77dfd1341: fn_calc_function_hash_ASCIS2023:0xbfba3f13 kernel32.dll!b'K32GetModuleFileNameExA'
+shellcode_hash: 0x7ff77dfd1601: fn_calc_function_hash_ASCIS2023:0xe0a65590 kernel32.dll!b'CloseHandle'
+shellcode_hash: 0x7ff77dfd1682: fn_calc_function_hash_ASCIS2023:0x3f62aa64 kernel32.dll!b'VirtualProtectEx'
+shellcode_hash: 0x7ff77dfd1731: fn_calc_function_hash_ASCIS2023:0x293d4672 kernel32.dll!b'WriteProcessMemory'
+shellcode_hash: 0x7ff77dfd183d: fn_calc_function_hash_ASCIS2023:0x23b81016 kernel32.dll!b'ReadProcessMemory'
+shellcode_hash: 0x7ff77dfd1e5c: fn_calc_function_hash_ASCIS2023:0x6a4af5cb ntdll.dll!b'NtQueryInformationProcess'
+shellcode_hash: 0x7ff77dfd1ecc: fn_calc_function_hash_ASCIS2023:0xb17e75f8 kernel32.dll!b'GetCurrentProcess'
+shellcode_hash: 0x7ff77dfd1fcd: fn_calc_function_hash_ASCIS2023:0xb70904b4 kernel32.dll!b'FindResourceW'
+shellcode_hash: 0x7ff77dfd2101: fn_calc_function_hash_ASCIS2023:0xf79c89c9 kernel32.dll!b'LoadResource'
+shellcode_hash: 0x7ff77dfd2171: fn_calc_function_hash_ASCIS2023:0xf9b01bb5 kernel32.dll!b'LockResource'
+shellcode_hash: 0x7ff77dfd2392: fn_calc_function_hash_ASCIS2023:0xe03410a5 kernel32.dll!b'OpenProcess'
+shellcode_hash: 0x7ff77dfd2411: fn_calc_function_hash_ASCIS2023:0x593d20fd kernel32.dll!b'VirtualAllocEx'
+shellcode_hash: 0x7ff77dfd24a2: fn_calc_function_hash_ASCIS2023:0x293d4672 kernel32.dll!b'WriteProcessMemory'
+shellcode_hash: 0x7ff77dfd25cf: fn_calc_function_hash_ASCIS2023:0x36754fdc kernel32.dll!b'LoadLibraryA'
+shellcode_hash: 0x7ff77dfd2660: fn_calc_function_hash_ASCIS2023:0x288ebde1 kernel32.dll!b'GetProcAddress'
+shellcode_hash: 0x7ff77dfd2731: fn_calc_function_hash_ASCIS2023:0x56c6dfa9 kernel32.dll!b'CreateRemoteThread'
+shellcode_hash: 0x7ff77dfd27c1: fn_calc_function_hash_ASCIS2023:0xe0a65590 kernel32.dll!b'CloseHandle'
+shellcode_hash: 0x7ff77dfd2831: fn_calc_function_hash_ASCIS2023:0x871e4ef5 kernel32.dll!b'VirtualFree'
+shellcode_hash: 0x7ff77dfd28a1: fn_calc_function_hash_ASCIS2023:0x3bd3566d kernel32.dll!b'VirtualFreeEx'
+shellcode_hash: Done
+
+struct MyStruct1
+{
+  PIMAGE_NT_HEADERS ntHeaders;
+  DWORD lpAddress;
+  DWORD unknown;
+  DWORD unknown1;
+  DWORD unknown2;
+  DWORD FILE_DLL_Characteristics;
+  DWORD unknown3;
+  LPVOID (__stdcall *VirtualAlloc)(LPVOID lpAddress, SIZE_T dwSize, DWORD flAllocationType, DWORD flProtect);
+  BOOL (__stdcall *VirtualFree)(LPVOID lpAddress, SIZE_T dwSize, DWORD dwFreeType);
+  HMODULE handle_module;
+  FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName);
+  BOOL (__stdcall *FreeLibrary)(HMODULE hLibModule);
+  DWORD unknown4;
+  DWORD flProtect;
+  DWORD unknown5;
+  DWORD dwSysInfoPageSize;
+};
+
+Final Flag: ASCIS{ThE_quicK_Br0WN_FOX_JUmP$_OVER_THe_1@ZY_Do6}
